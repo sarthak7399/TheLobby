@@ -9,12 +9,21 @@ import userRoutes from "./routes/user.routes.js";
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
-
+import cors from 'cors'
 
 dotenv.config(); 
 
 const PORT = process.env.PORT || 5001;
 const __dirname = path.resolve();
+
+
+const allowedOrigins = ['http://localhost:3000','https://thelobby.onrender.com/'];
+
+const options = {
+  origin: allowedOrigins
+};
+
+app.use(cors(options))
 
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 app.use(cookieParser());

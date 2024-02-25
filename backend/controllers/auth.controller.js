@@ -27,10 +27,10 @@ export const signup = async (req, res) => {
 		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
 		const newUser = new User({
-			fullName,
-			username,
+			userName: username,
+			fullName:fullName,
 			password: hashedPassword,
-			gender,
+			gender: gender,
 			profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
 		});
 		if (newUser) {
@@ -41,7 +41,7 @@ export const signup = async (req, res) => {
 			res.status(201).json({
 				_id: newUser._id,
 				fullName: newUser.fullName,
-				username: newUser.username,
+				userName: newUser.userName,
 				profilePic: newUser.profilePic,
 			});
 		} else {
