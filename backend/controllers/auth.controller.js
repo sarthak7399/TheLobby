@@ -4,17 +4,17 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
 		try {
-		const { fullName, username, password, confirmPassword, gender } = req.body;
+		const { fullName, userName, password, confirmPassword, gender } = req.body;
 	
 
 		if (password !== confirmPassword) {
 			return res.status(400).json({ error: "Passwords don't match" });
 		}
 
-		const user = await User.findOne({ username: username });
+		const user = await User.findOne({ userName: userName });
 
 		if (user) {
-			return res.status(400).json({ error: "Username already exists" });
+			return res.status(400).json({ error: "userName already exists" });
 		}
 
 		// HASH PASSWORD HERE
@@ -23,11 +23,11 @@ export const signup = async (req, res) => {
 
 		// https://avatar-placeholder.iran.liara.run/
 
-		const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
-		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+		const boyProfilePic = `https://avatar.iran.liara.run/public/boy?userName=${userName}`;
+		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?userName=${userName}`;
 
 		const newUser = new User({
-			userName: username,
+			userName: userName,
 			fullName:fullName,
 			password: hashedPassword,
 			gender: gender,
@@ -55,12 +55,12 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
 	try {
-		const { username, password } = req.body;
-		const user = await User.findOne({ username:username });
+		const { userName, password } = req.body;
+		const user = await User.findOne({ userName:userName });
 		const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
 
 		if (!user || !isPasswordCorrect) {
-			return res.status(400).json({ error: "Invalid username or password" });
+			return res.status(400).json({ error: "Invalid userName or password" });
 		}
 
 		generateTokenAndSetCookie(user._id, res);
@@ -68,7 +68,7 @@ export const login = async (req, res) => {
 		res.status(200).json({
 			_id: user._id,
 			fullName: user.fullName,
-			username: user.username,
+			userName: user.userName,
 			profilePic: user.profilePic,
 		});
 	} catch (error) {
