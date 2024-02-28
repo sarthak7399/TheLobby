@@ -4,6 +4,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
+import userRoutes from "./routes/user.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 
 
@@ -16,6 +17,7 @@ app.use(express.json());  // to parse json
 app.use(cookieParser()); // to parse cookies
 app.use("/api/auth",authRoutes);    //Middlewares
 app.use("/api/messages",messageRoutes); 
+app.use("/api/users", userRoutes);
 
 // app.get("/", (req,res)=>{
 //     //root route https:localhost:5000/
