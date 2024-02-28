@@ -54,8 +54,13 @@ export const signup = async(req, res) => {
         console.log("Error in signup controller.", error.message);
         res.status(500).json({error:"Internal Server Error"});
     }
-}
+};
 
+/**
+ * Handle user login
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ */
 export const login = async (req, res) => {
     try {
         const { userName, password } = req.body;
@@ -79,7 +84,7 @@ export const login = async (req, res) => {
         console.log("Error in login controller.", error.message);
         res.status(500).json({error:"Internal Server Error"});
     }
-}
+};
 
 export const logout = (req, res) => {
     try {
@@ -92,4 +97,4 @@ export const logout = (req, res) => {
         console.log("Error in logout controller.", error.message);
         res.status(500).json({error:"Internal Server Error"});
     }
-}
+};
