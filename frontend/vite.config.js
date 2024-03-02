@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config(); 
 
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 10000;
 // https://vitejs.dev/config/
 export default defineConfig({
