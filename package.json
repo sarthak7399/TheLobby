@@ -1,8 +1,8 @@
 {
-  "name": "chat-app-yt",
+  "name": "TheLobby",
   "version": "1.0.0",
   "description": "![Demo App](https://i.ibb.co/gFSMzKN/1.png)",
-  "main": "server.js",
+  "main": "server.js", 
   "scripts": {
     "server": "nodemon backend/server.js",
     "start": "node backend/server.js",
