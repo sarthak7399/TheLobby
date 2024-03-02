@@ -1,5 +1,6 @@
 # TheLobby
 
+<<<<<<< Updated upstream
 Welcome to TheLobby! TheLobby is a platform designed to facilitate communication and collaboration among users in a virtual environment.
 
 ## About
@@ -44,3 +45,8 @@ Once the application is running, users can:
 ## Contributing
 
 Contributions are welcome! If you have any ideas, enhancements, or bug fixes, feel free to open an issue or submit a pull request.
+=======
+<!-- Install Tailwind CSS for Vite and DaisyUI -->
+
+<!-- Use command : "npm run server" to the application -->
+>>>>>>> Stashed changes
