@@ -2,6 +2,10 @@ import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
 
+/**
+* @param {object} req - The request object
+* @param {object} res - The response object
+*/
 export const signup = async (req, res) => {
 		try {
 		const { fullName, userName, password, confirmPassword, gender } = req.body;
@@ -53,6 +57,12 @@ export const signup = async (req, res) => {
 	}
 };
 
+
+/**
+ * Handle user login
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ */
 export const login = async (req, res) => {
 	try {
 		const { userName, password } = req.body;
